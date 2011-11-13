@@ -1,15 +1,4 @@
 {
-  "homeys":
-  {
-    "glen":
-    [{
-      "team": "giants",
-      "band": "depeche mode"
-    }]
-    "jesse":
-    [{
-      "team": "mets",
-      "band": "tool"
-    }]
-  }
+  "team": "giants",
+  "band": "depeche mode"
 }

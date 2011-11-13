@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
+  <!--<link rel="stylesheet" href="css/style.css">-->
 </head>
 <body>
 <div id="container">
@@ -40,25 +40,20 @@
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.js"><\/script>')</script>
 <script>
 
-  jQuery.ajax({
-    url: "data.json",
-    dataType: "text",
-    error: function(request,error,message){
-      jQuery("#error").show();
-      if(error == "timeout") {
-        jQuery(".log").append("The request timed out, please resubmit");
-      }
-      else {
-        jQuery(".log").append("ERROR: "+message);
-      }
-    },
-    success: function(data,status,request){
-      var jData = data;
-      cosole.log(arguments);
-      jQuery.each(jData.homeys,function(k,v) {
-        console.log("key="+k+" val="+v);
-      });
-    }
+  var dataSet = {};
+
+  $.getJSON('data.json', function(data) {
+    var items = [];
+    dataSet = data;
+
+    $.each(dataSet, function(key, val) {
+      items.push('<li id="' + key + '">' + val + '</li>');
+    });
+
+    $('<ul/>', {
+      'class': 'my-new-list',
+      html: items.join('')
+    }).appendTo('body');
   });
 
 </script>
