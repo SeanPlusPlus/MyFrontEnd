@@ -41,7 +41,7 @@
 <script>
 
   jQuery.ajax({
-    url: "",
+    url: "data.json",
     dataType: "text",
     error: function(request,error,message){
       jQuery("#error").show();
@@ -49,10 +49,17 @@
         jQuery(".log").append("The request timed out, please resubmit");
       }
       else {
-        jQuery(".log").append("<div class='error'>ERROR: '"+message+"' when trying to load '"+branch+"'.<ol><li>Verify you have the right branch name</li><li>use the <a href='http://cdc-site-dev.cisco.com/mad' target='_blank'>make asset dashboard</a> to create a new manifest then come back and try again</li></ol></div>");
+        jQuery(".log").append("ERROR: "+message);
       }
     },
-    success: function
+    success: function(data,status,request){
+      var jData = data;
+      cosole.log(arguments);
+      jQuery.each(jData.homeys,function(k,v) {
+        console.log("key="+k+" val="+v);
+      });
+    }
+  });
 
 </script>
 </body>
