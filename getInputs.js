@@ -46,6 +46,12 @@ function processFontFamily()
   document.getElementById("wrapper").style.fontFamily=font_family;
 }
 
+function processFontWeight(weight)
+{
+  //var font_weight = document.getElementById('font_weight_format').value;
+  var font_weight = weight.value
+  document.getElementById("wrapper").style.fontWeight=font_weight;
+}
 var min=6;
 var max=20;
 function increaseFontSize() {
